@@ -54,7 +54,7 @@ export const AppButton = (props: Props) => {
   const textStyles: StyleProp<TextStyle> = {
     color,
     fontSize,
-    // fontFamily: resolveFontWeight(fontWeight),
+    fontFamily: resolveFontWeight(fontWeight),
     textAlign,
   };
 
