@@ -1,10 +1,12 @@
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+
 export type RootStackParamList = {
   Client: undefined;
   Waiter: undefined;
   Scanner: undefined;
 };
 
-// export type HomeScreenNavigationProp = NativeStackNavigationProp<
-//   RootStackParamList,
-//   'Home'
-// >;
+export type ScannerScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'Scanner'
+>;

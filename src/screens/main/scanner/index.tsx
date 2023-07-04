@@ -4,12 +4,18 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {AppHeader} from '../../../components/AppHeader';
 import {useNavigation} from '@react-navigation/native';
 import {AppText} from '../../../components/AppText';
+import {ScannerScreenNavigationProp} from '../../../navigation/types';
+import {AppButton} from '../../../components/AppButton';
 
 const ScannerScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<ScannerScreenNavigationProp>();
 
-  const handleGoToWaiter = () => {};
-  const handleGoToClient = () => {};
+  const handleGoToWaiter = () => {
+    navigation.navigate('Waiter');
+  };
+  const handleGoToClient = () => {
+    navigation.navigate('Client');
+  };
 
   return (
     <SafeAreaView style={styles.main} edges={['top']}>
@@ -17,6 +23,9 @@ const ScannerScreen = () => {
 
       <ScrollView>
         <AppText text="Hello World" />
+
+        <AppButton title="Client" onPress={handleGoToWaiter} />
+        <AppButton title="Waiter" onPress={handleGoToClient} />
       </ScrollView>
     </SafeAreaView>
   );
