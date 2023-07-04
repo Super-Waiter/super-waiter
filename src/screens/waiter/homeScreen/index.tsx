@@ -1,17 +1,17 @@
 import React from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
-import {AppButton} from '../../components/AppButton';
-import {Colors} from '../../style';
+import {AppButton} from '../../../components/AppButton';
+import {Colors} from '../../../style';
 import {useNavigation} from '@react-navigation/native';
-import {HomeScreenNavigationProp} from '../../navigation/types';
-import {AppHeader} from '../../components/AppHeader';
+import {AppHeader} from '../../../components/AppHeader';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {WaiterHomeScreenNavigationProp} from '../../../navigation/waiterStack/types';
 
-const HomeScreen = () => {
-  const navigation = useNavigation<HomeScreenNavigationProp>();
+const WaiterHomeScreen = () => {
+  const navigation = useNavigation<WaiterHomeScreenNavigationProp>();
 
   const handleLoginPress = () => {
-    navigation.navigate('Login');
+    navigation.navigate('Waiter_Login');
   };
 
   return (
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default WaiterHomeScreen;
