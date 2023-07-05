@@ -1,10 +1,14 @@
 import React from 'react';
 import {FlatList, StyleSheet} from 'react-native';
-import {Colors} from '../../../style';
-import {AppHeader} from '../../../components/AppHeader';
 import {SafeAreaView} from 'react-native-safe-area-context';
+
+// style
+import {Colors} from '../../../style';
+
+// components
+import {AppHeader} from '../../../components/AppHeader';
 import {AppText} from '../../../components/AppText';
-import {RoomCircleBtn} from '../homeScreen/RoomCircleBtn';
+import {RoomCircleBtn} from './RoomCircleBtn';
 
 const WaiterRoomsScreen = () => {
   return (
