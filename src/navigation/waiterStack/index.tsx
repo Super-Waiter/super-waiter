@@ -1,22 +1,22 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {WaiterStackParamList} from './types';
-import WaiterHomeScreen from '../../screens/waiter/homeScreen';
-import WaiterLogin from '../../screens/waiter/onboarding/WaiterLogin';
-import WaiterSignUp from '../../screens/waiter/onboarding/WaiterSignUp';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import ProfileScreen from '../../screens/waiter/ProfileScreen';
+import AddRoomScreen from '../../screens/waiter/AddRoomScreen';
+import WaiterRoomsScreen from '../../screens/waiter/WaiterRoomsScreen';
 
-const Stack = createNativeStackNavigator<WaiterStackParamList>();
+const Stack = createBottomTabNavigator<WaiterStackParamList>();
 
 export const WaiterStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Waiter_Home"
+      initialRouteName="Rooms"
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="Waiter_Home" component={WaiterHomeScreen} />
-      <Stack.Screen name="Waiter_Login" component={WaiterLogin} />
-      <Stack.Screen name="Waiter_SignUp" component={WaiterSignUp} />
+      <Stack.Screen name="Rooms" component={WaiterRoomsScreen} />
+      <Stack.Screen name="AddRoom" component={AddRoomScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
     </Stack.Navigator>
   );
 };

@@ -1,12 +1,12 @@
-import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import type {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 
 export type WaiterStackParamList = {
-  Waiter_Home: undefined;
-  Waiter_Login: undefined;
-  Waiter_SignUp: undefined;
+  Rooms: undefined;
+  AddRoom: undefined;
+  Profile: undefined;
 };
 
-export type WaiterHomeScreenNavigationProp = NativeStackNavigationProp<
+export type WaiterHomeScreenNavigationProp = BottomTabNavigationProp<
   WaiterStackParamList,
-  'Waiter_Home'
+  'Rooms'
 >;
