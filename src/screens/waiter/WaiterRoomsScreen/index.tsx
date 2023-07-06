@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useMemo} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
@@ -10,15 +10,12 @@ import {AppHeader} from '../../../components/AppHeader';
 import {AppText} from '../../../components/AppText';
 import {RoomCircleBtn} from './RoomCircleBtn';
 import {tempRoomData} from '../../../tempData/foods';
-import {Room} from '../../../model';
 
 const WaiterRoomsScreen = () => {
-  const [displayedRooms, setDisplayedRooms] = useState<Room[]>([]);
-
-  useEffect(() => {
-    const sortedRooms = tempRoomData.sort((a, b) => {});
-
-    setDisplayedRooms(sortedRooms);
+  const sortedRoomsByStatus = useMemo(() => {
+    return tempRoomData.sort((a, b) => {
+      return a.status - b.status;
+    });
   }, []);
 
   return (
@@ -37,7 +34,7 @@ const WaiterRoomsScreen = () => {
       />
 
       <FlatList
-        data={displayedRooms}
+        data={sortedRoomsByStatus}
         renderItem={({item}) => {
           return <RoomCircleBtn item={item} />;
         }}
