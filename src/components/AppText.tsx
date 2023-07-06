@@ -7,7 +7,7 @@ interface Props {
   color?: string;
   fontSize?: number;
   fontWeight?: FontWeight;
-  text?: string;
+  text?: string | number;
   textTransform?: 'none' | 'capitalize' | 'uppercase' | 'lowercase' | undefined;
   children?: any;
   textAlign?: 'auto' | 'left' | 'right' | 'center' | 'justify' | undefined;

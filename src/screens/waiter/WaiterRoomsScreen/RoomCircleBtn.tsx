@@ -1,17 +1,48 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 import {AppText} from '../../../components/AppText';
+import {Room, ROOM_STATUS} from '../../../model';
 import {Colors, Fonts, Utils} from '../../../style';
 
-export const RoomCircleBtn = () => {
+type Props = {
+  item: Room;
+};
+
+export const RoomCircleBtn = ({item}: Props) => {
+  const resolveColor = () => {
+    if (item.status === ROOM_STATUS.BOOKED) {
+      return Colors.Yellow;
+    }
+
+    if (item.status === ROOM_STATUS.BUSY) {
+      return Colors.Primary;
+    }
+
+    if (item.status === ROOM_STATUS.CALLING) {
+      return Colors.Red;
+    }
+
+    return Colors.Grey;
+  };
+
+  const dynamicBtnStyles: StyleProp<ViewStyle> = {
+    borderColor: resolveColor(),
+  };
+
   return (
     <View style={styles.main}>
-      <TouchableOpacity style={styles.circle}>
+      <TouchableOpacity style={[styles.circle, dynamicBtnStyles]}>
         <AppText
-          color={Colors.Primary}
+          color={resolveColor()}
           fontSize={Fonts.xl2}
           fontWeight="semibold">
-          234
+          {item.id}
         </AppText>
       </TouchableOpacity>
     </View>
