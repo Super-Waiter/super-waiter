@@ -10,7 +10,7 @@ import {Colors} from '../../../style';
 import {AppHeader} from '../../../components/AppHeader';
 import {AppText} from '../../../components/AppText';
 import {RoomCircleBtn} from './RoomCircleBtn';
-import {tempRoomData} from '../../../tempData/foods';
+import {tempRoomData} from '../../../tempData/rooms';
 
 // Icons
 import AntDesign from 'react-native-vector-icons/AntDesign';
