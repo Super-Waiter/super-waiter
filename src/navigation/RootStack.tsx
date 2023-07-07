@@ -12,7 +12,7 @@ const RootStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Scanner"
+        initialRouteName="Waiter"
         screenOptions={{
           headerShown: false,
         }}>

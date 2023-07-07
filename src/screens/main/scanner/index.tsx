@@ -3,9 +3,9 @@ import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {AppHeader} from '../../../components/AppHeader';
 import {useNavigation} from '@react-navigation/native';
-import {AppText} from '../../../components/AppText';
 import {ScannerScreenNavigationProp} from '../../../navigation/types';
 import {AppButton} from '../../../components/AppButton';
+import {Colors} from '../../../style';
 
 const ScannerScreen = () => {
   const navigation = useNavigation<ScannerScreenNavigationProp>();
@@ -19,11 +19,13 @@ const ScannerScreen = () => {
 
   return (
     <SafeAreaView style={styles.main} edges={['top']}>
-      <AppHeader title="Scan it" />
+      <AppHeader
+        title="Welcome"
+        titleColor={Colors.White}
+        backgroundColor={Colors.Primary}
+      />
 
       <ScrollView>
-        <AppText text="Hello World" />
-
         <AppButton title="Client" onPress={handleGoToWaiter} />
         <AppButton title="Waiter" onPress={handleGoToClient} />
       </ScrollView>

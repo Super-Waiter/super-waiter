@@ -58,7 +58,9 @@ export const AppHeader = (props: Props) => {
   const renderLeftIcon = () => {
     if (leftIcon) {
       return (
-        <TouchableOpacity onPress={leftIcon.onPress}>
+        <TouchableOpacity
+          onPress={leftIcon.onPress}
+          disabled={!leftIcon.onPress}>
           {leftIcon.children}
         </TouchableOpacity>
       );

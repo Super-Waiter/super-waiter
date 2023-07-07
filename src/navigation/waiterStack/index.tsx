@@ -1,22 +1,64 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {WaiterStackParamList} from './types';
-import WaiterHomeScreen from '../../screens/waiter/homeScreen';
-import WaiterLogin from '../../screens/waiter/onboarding/WaiterLogin';
-import WaiterSignUp from '../../screens/waiter/onboarding/WaiterSignUp';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-const Stack = createNativeStackNavigator<WaiterStackParamList>();
+// screens
+import MenuScreen from '../../screens/waiter/MenuScreen';
+import ChatsScreen from '../../screens/waiter/ChatsScreen';
+import WaiterRoomsScreen from '../../screens/waiter/WaiterRoomsScreen';
+
+// icons
+import Foundation from 'react-native-vector-icons/Foundation';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+
+const Stack = createBottomTabNavigator<WaiterStackParamList>();
 
 export const WaiterStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Waiter_Home"
+      initialRouteName="Rooms"
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="Waiter_Home" component={WaiterHomeScreen} />
-      <Stack.Screen name="Waiter_Login" component={WaiterLogin} />
-      <Stack.Screen name="Waiter_SignUp" component={WaiterSignUp} />
+      <Stack.Screen
+        options={{
+          // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarIcon: ({color}) => (
+            <MaterialCommunityIcons
+              name="view-dashboard"
+              size={30}
+              color={color}
+            />
+          ),
+        }}
+        name="Rooms"
+        component={WaiterRoomsScreen}
+      />
+      <Stack.Screen
+        options={{
+          // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarIcon: ({color}) => (
+            <Entypo name="chat" size={30} color={color} />
+          ),
+        }}
+        name="Chats"
+        component={ChatsScreen}
+      />
+      <Stack.Screen
+        options={{
+          // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarIcon: ({color}) => (
+            <MaterialCommunityIcons
+              name="food-outline"
+              size={30}
+              color={color}
+            />
+          ),
+        }}
+        name="Menu"
+        component={MenuScreen}
+      />
     </Stack.Navigator>
   );
 };
