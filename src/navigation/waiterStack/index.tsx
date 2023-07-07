@@ -4,13 +4,10 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // screens
 import MenuScreen from '../../screens/waiter/MenuScreen';
-import ChatsScreen from '../../screens/waiter/ChatsScreen';
 import WaiterRoomsScreen from '../../screens/waiter/WaiterRoomsScreen';
 
 // icons
-import Foundation from 'react-native-vector-icons/Foundation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
 
 const Stack = createBottomTabNavigator<WaiterStackParamList>();
 
@@ -34,16 +31,6 @@ export const WaiterStack = () => {
         }}
         name="Rooms"
         component={WaiterRoomsScreen}
-      />
-      <Stack.Screen
-        options={{
-          // eslint-disable-next-line react/no-unstable-nested-components
-          tabBarIcon: ({color}) => (
-            <Entypo name="chat" size={30} color={color} />
-          ),
-        }}
-        name="Chats"
-        component={ChatsScreen}
       />
       <Stack.Screen
         options={{

@@ -10,4 +10,4 @@ export const WhiteTransparent = 'rgba(255, 255, 255, 0.5)';
 export const Grey = 'grey';
 export const Black = 'black';
 export const Green = 'green';
-export const Yellow = '#FFD708';
+export const Yellow = '#F6CF00';
