@@ -4,7 +4,7 @@ import React from 'react';
 
 const ChatsScreen = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView edges={['top']} style={styles.main}>
       <Text>ChatsScreen</Text>
     </SafeAreaView>
   );
@@ -12,4 +12,8 @@ const ChatsScreen = () => {
 
 export default ChatsScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+  },
+});

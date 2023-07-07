@@ -3,8 +3,8 @@ import {WaiterStackParamList} from './types';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // screens
-import MenuScreen from '../../screens/waiter/MenuScreen';
-import WaiterRoomsScreen from '../../screens/waiter/WaiterRoomsScreen';
+import MenuScreen from '../../screens/waiter/menuScreen';
+import WaiterRoomsScreen from '../../screens/waiter/waiterRoomsScreen';
 
 // icons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';

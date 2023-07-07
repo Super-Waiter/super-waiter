@@ -10,19 +10,29 @@ import {AppText} from '../../../components/AppText';
 import {Room} from '../../../model';
 import {Colors, Fonts, Utils} from '../../../style';
 import {resolvRoomStatuseColor} from '../../../utils/resolvRoomStatuseColor';
+import {useNavigation} from '@react-navigation/native';
+import {RoomDetailsScreenNavigationProp} from '../../../navigation/types';
 
 type Props = {
   item: Room;
 };
 
 export const RoomCircleBtn = ({item}: Props) => {
+  const navigation = useNavigation<RoomDetailsScreenNavigationProp>();
+
   const dynamicBtnStyles: StyleProp<ViewStyle> = {
     borderColor: resolvRoomStatuseColor(item.status),
   };
 
+  const onPress = () => {
+    navigation.navigate('RoomDetails', {id: item.id});
+  };
+
   return (
     <View style={styles.main}>
-      <TouchableOpacity style={[styles.circle, dynamicBtnStyles]}>
+      <TouchableOpacity
+        style={[styles.circle, dynamicBtnStyles]}
+        onPress={onPress}>
         <AppText
           color={resolvRoomStatuseColor(item.status)}
           fontSize={Fonts.xl2}

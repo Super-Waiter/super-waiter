@@ -44,7 +44,13 @@ export const RoomStatusInfoModal = (props: Props) => {
 
         <Spacing vertical={5} />
 
-        <AppButton title="Okay" width={120} height={40} onPress={toggleModal} />
+        <AppButton
+          title="Okay"
+          fontWeight="bold"
+          width={120}
+          height={40}
+          onPress={toggleModal}
+        />
       </View>
     </ReactNativeModal>
   );
@@ -76,16 +82,15 @@ const Item = (props: ItemProps) => {
   };
 
   return (
-    <>
-      <View style={styles.component}>
-        <View style={[styles.dot, {backgroundColor: color}]} />
-        <Spacing vertical={10} />
-        <AppText text="-" />
-        <Spacing vertical={10} />
-        <AppText text={resolveStatusTitle()} />
-      </View>
-      <Spacing horizontal={10} />
-    </>
+    <View style={styles.component}>
+      <View style={[styles.dot, {backgroundColor: color}]} />
+      <Spacing vertical={10} />
+
+      <AppText text="-" fontWeight="semibold" />
+
+      <Spacing vertical={10} />
+      <AppText text={resolveStatusTitle()} fontWeight="semibold" />
+    </View>
   );
 };
 
@@ -104,14 +109,16 @@ const styles = StyleSheet.create({
   },
   mainView: {
     width: '100%',
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
   dot: {
-    width: 25,
-    height: 25,
+    width: 35,
+    height: 35,
     borderRadius: 99,
   },
   component: {
     flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
   },
 });
