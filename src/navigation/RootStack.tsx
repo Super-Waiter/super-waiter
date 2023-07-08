@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {WaiterStack} from './waiterStack';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -6,10 +6,25 @@ import {RootStackParamList} from './types';
 import {ClientStack} from './clientStack';
 import ScannerScreen from '../screens/main/scanner';
 import RoomDetailsScreen from '../screens/waiter/roomDetails';
+import socket from '../socket';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
+  useEffect(() => {
+    socket.on('connect', () => {
+      console.log('connected');
+    });
+
+    socket.on('disconnect', () => {
+      console.log('disconnected');
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator
