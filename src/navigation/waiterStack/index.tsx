@@ -8,6 +8,7 @@ import WaiterRoomsScreen from '../../screens/waiter/waiterRoomsScreen';
 
 // icons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Colors} from '../../style';
 
 const Stack = createBottomTabNavigator<WaiterStackParamList>();
 
@@ -17,6 +18,7 @@ export const WaiterStack = () => {
       initialRouteName="Rooms"
       screenOptions={{
         headerShown: false,
+        tabBarActiveTintColor: Colors.Primary,
       }}>
       <Stack.Screen
         options={{

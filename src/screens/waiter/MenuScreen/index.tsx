@@ -63,22 +63,7 @@ const MenuScreen = () => {
       <View style={styles.title}>
         <FlatList
           data={section.contents}
-          renderItem={({item}) => (
-            <View style={styles.item}>
-              <AppImage customStyle={styles.img} uri={item.images[0]} />
-
-              <Spacing horizontal={10} />
-
-              <View>
-                <AppText fontWeight="semibold" text={item.title} />
-                <AppText text={item.description} />
-              </View>
-
-              <View style={styles.priceView}>
-                <AppText fontWeight="semibold" text={item.price} />
-              </View>
-            </View>
-          )}
+          renderItem={({item}) => <Item item={item} />}
           keyExtractor={item => item.id}
         />
       </View>
@@ -115,6 +100,34 @@ const MenuScreen = () => {
 
 export default MenuScreen;
 
+interface ItemProps {
+  item: Food;
+}
+
+const Item = ({item}: ItemProps) => {
+  return (
+    <View style={styles.item}>
+      <AppImage customStyle={styles.img} uri={item.images[0]} />
+
+      <Spacing horizontal={10} />
+
+      <View style={styles.foodInfoView}>
+        <AppText fontWeight="semibold" text={item.title} />
+
+        <Spacing vertical={2} />
+
+        <AppText numberOfLines={3} text={item.description} />
+
+        <Spacing vertical={2} />
+
+        <View style={styles.priceView}>
+          <AppText fontWeight="semibold" text={`$${item.price}`} />
+        </View>
+      </View>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   main: {
     flex: 1,
@@ -134,7 +147,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: Colors.White,
     marginBottom: 10,
-    height: 120,
     margin: 2,
     ...Shadows.Shadowed,
   },
@@ -144,8 +156,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   priceView: {
-    position: 'absolute',
-    bottom: 5,
-    right: 5,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  foodInfoView: {
+    flexShrink: 1,
   },
 });

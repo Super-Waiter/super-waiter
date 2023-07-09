@@ -4,6 +4,8 @@ export type ClientStackParamList = {
   Client_Home: undefined;
   Client_Login: undefined;
   Client_SignUp: undefined;
+  Chat_Screen: undefined;
+  Menu_Screen: undefined;
 };
 
 export type ClientHomeScreenNavigationProp = NativeStackNavigationProp<

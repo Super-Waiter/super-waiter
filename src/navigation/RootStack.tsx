@@ -13,7 +13,7 @@ const RootStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Waiter"
+        initialRouteName="Client"
         screenOptions={{
           headerShown: false,
         }}>
