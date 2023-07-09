@@ -4,14 +4,22 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {AppHeader} from '../../../components/AppHeader';
 import {Colors} from '../../../style';
 import {BackIcon} from '../../../components/BackIcon';
+import {useNavigation} from '@react-navigation/native';
+import {RoomDetailsScreenNavigationProp} from '../../../navigation/types';
 
 const RoomDetailsScreen = () => {
+  const navigation = useNavigation<RoomDetailsScreenNavigationProp>();
+
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <SafeAreaView edges={['top']} style={styles.main}>
       <AppHeader
         leftIcon={{
           children: <BackIcon color={Colors.White} />,
-          onPress: () => {},
+          onPress: handleGoBack,
         }}
         backgroundColor={Colors.Primary}
         titleColor={Colors.White}
