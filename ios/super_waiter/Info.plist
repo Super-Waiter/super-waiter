@@ -88,5 +88,9 @@
 		<string>Zocial.ttf</string>
 		<string>Fontisto.ttf</string>
 	</array>
+		<key>NSCameraUsageDescription</key>
+    <string>For taking photos</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+	<string>For saving photos</string>
 </dict>
 </plist>
