@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "19222681565",
+    "project_id": "super-waiter",
+    "storage_bucket": "super-waiter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19222681565:android:ffccbc508effa60eed4834",
+        "android_client_info": {
+          "package_name": "com.superWaiter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19222681565-9i1l1vtcvd8pom0slpt1irjhle5vtd6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUPEtKT77H2enOkHD5UksJ_93fbammXTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19222681565-9i1l1vtcvd8pom0slpt1irjhle5vtd6o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "19222681565-ppo5mh72n22l5qaue9bqop087epmhgsk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.superWaiter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

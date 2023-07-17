@@ -14,6 +14,8 @@ const RootStack = () => {
   useEffect(() => {
     socket.on('connect', () => {
       console.log('connected');
+
+      socket.emit('user-joined', {userId: '1234'});
     });
 
     socket.on('disconnect', () => {
