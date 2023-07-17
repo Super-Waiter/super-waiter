@@ -6,6 +6,7 @@ import {RootStackParamList} from './types';
 import {ClientStack} from './clientStack';
 import ScannerScreen from '../screens/main/scanner';
 import RoomDetailsScreen from '../screens/waiter/roomDetails';
+import SignupWaiterScreen from '../screens/main/SignupWaiterScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -21,6 +22,7 @@ const RootStack = () => {
         <Stack.Screen name="Waiter" component={WaiterStack} />
         <Stack.Screen name="Scanner" component={ScannerScreen} />
         <Stack.Screen name="RoomDetails" component={RoomDetailsScreen} />
+        <Stack.Screen name="SignupWaiter" component={SignupWaiterScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

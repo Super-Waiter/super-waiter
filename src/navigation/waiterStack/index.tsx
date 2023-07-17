@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {WaiterStackParamList} from './types';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -22,7 +23,6 @@ export const WaiterStack = () => {
       }}>
       <Stack.Screen
         options={{
-          // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({color}) => (
             <MaterialCommunityIcons
               name="view-dashboard"
@@ -36,7 +36,6 @@ export const WaiterStack = () => {
       />
       <Stack.Screen
         options={{
-          // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({color}) => (
             <MaterialCommunityIcons
               name="food-outline"
