@@ -42,14 +42,9 @@ const WaiterRoomsScreen = () => {
           ),
         }}
         rightIcon={{
-          onPress: () => {},
+          onPress: toggleModal,
           children: (
-            <AntDesign
-              color={Colors.White}
-              name="questioncircleo"
-              size={30}
-              onPress={toggleModal}
-            />
+            <AntDesign color={Colors.White} name="questioncircleo" size={30} />
           ),
         }}
       />

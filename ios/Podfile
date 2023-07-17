@@ -25,6 +25,9 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
+use_frameworks! :linkage => :static
+$RNFirebaseAsStaticFramework = true
+
 target 'super_waiter' do
   config = use_native_modules!
 
@@ -40,7 +43,7 @@ target 'super_waiter' do
     #
     # Note that if you have use_frameworks! enabled, Flipper will not work and
     # you should disable the next line.
-    :flipper_configuration => flipper_config,
+    # :flipper_configuration => flipper_config,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
