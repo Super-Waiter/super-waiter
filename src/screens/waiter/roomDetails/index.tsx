@@ -9,11 +9,6 @@ import {useNavigation} from '@react-navigation/native';
 
 const RoomDetailsScreen = () => {
   const navigation = useNavigation<RoomDetailsScreenNavigationProp>();
-import {useNavigation} from '@react-navigation/native';
-import {RoomDetailsScreenNavigationProp} from '../../../navigation/types';
-
-const RoomDetailsScreen = () => {
-  const navigation = useNavigation<RoomDetailsScreenNavigationProp>();
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -24,7 +19,6 @@ const RoomDetailsScreen = () => {
       <AppHeader
         leftIcon={{
           children: <BackIcon color={Colors.White} />,
-          onPress: () => navigation.navigate('Waiter'),
           onPress: handleGoBack,
         }}
         backgroundColor={Colors.Primary}
