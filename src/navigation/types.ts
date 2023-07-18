@@ -4,7 +4,7 @@ export type RootStackParamList = {
   Client: undefined;
   Waiter: undefined;
   Scanner: undefined;
-  SignupWaiter: undefined;
+  Login: undefined;
   RoomDetails: {id: string};
 };
 
@@ -22,9 +22,9 @@ export type WaiterScreenNavigationProp = NativeStackNavigationProp<
   'Waiter'
 >;
 
-export type SignupWaiterScreenNavigationProp = NativeStackNavigationProp<
+export type LoginWaiterScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
-  'SignupWaiter'
+  'Login'
 >;
 
 export type ClientScreenNavigationProp = NativeStackNavigationProp<

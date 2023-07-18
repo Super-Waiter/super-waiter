@@ -4,16 +4,16 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 
 // navigations
 import {useNavigation} from '@react-navigation/native';
-import {ScannerScreenNavigationProp} from '../../../navigation/types';
+import {ScannerScreenNavigationProp} from '../../../../navigation/types';
 
 // styles
-import {Colors, Utils} from '../../../style';
+import {Colors, Utils} from '../../../../style';
 
 // components
 // import {AppHeader} from '../../../components/AppHeader';
-import {AppButton} from '../../../components/AppButton';
-import {Spacing} from '../../../components/Spacing';
-import {AppText} from '../../../components/AppText';
+import {AppButton} from '../../../../components/AppButton';
+import {Spacing} from '../../../../components/Spacing';
+import {AppText} from '../../../../components/AppText';
 
 // react-native-camera-kit
 import {CameraScreen} from 'react-native-camera-kit';
@@ -92,7 +92,7 @@ const ScannerScreen = () => {
           <Spacing vertical={100} />
           <AppButton
             title="Are you waiter?"
-            onPress={() => navigation.navigate('SignupWaiter')}
+            onPress={() => navigation.navigate('Login')}
             isTextButton
             color={Colors.Primary}
           />

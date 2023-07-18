@@ -30,6 +30,8 @@
 		C830040C496C4FBBA28BCC98 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9627E1207DE64561B936D666 /* Montserrat-SemiBoldItalic.ttf */; };
 		CBF7ACB603DD4D04BFCBCDCC /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B8CAE5A381B4666A292767F /* Montserrat-Thin.ttf */; };
 		CDB04749A59B4B82AD665A66 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E180370E8E64AB996B13E51 /* Montserrat-Light.ttf */; };
+		CE5969262A668627008D7767 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5969252A668626008D7767 /* BootSplash.storyboard */; };
+		CE5969272A668627008D7767 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5969252A668626008D7767 /* BootSplash.storyboard */; };
 		CEB1F93A2A55FE4C003CDA2C /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEB1F92A2A55FE4C003CDA2C /* Fontisto.ttf */; };
 		CEB1F93B2A55FE4C003CDA2C /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEB1F92A2A55FE4C003CDA2C /* Fontisto.ttf */; };
 		CEB1F93C2A55FE4C003CDA2C /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEB1F92B2A55FE4C003CDA2C /* Octicons.ttf */; };
@@ -112,6 +114,7 @@
 		AFA0C7E3CCDE4DAAB6A9D187 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Black.ttf"; path = "../assets/fonts/Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		C5351FA73A45452F8B207773 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraLightItalic.ttf"; path = "../assets/fonts/Montserrat-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		C7ADB6BEF750426580132310 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraBoldItalic.ttf"; path = "../assets/fonts/Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		CE5969252A668626008D7767 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = super_waiter/BootSplash.storyboard; sourceTree = "<group>"; };
 		CEB1F92A2A55FE4C003CDA2C /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		CEB1F92B2A55FE4C003CDA2C /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		CEB1F92C2A55FE4C003CDA2C /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
@@ -173,6 +176,7 @@
 		13B07FAE1A68108700A75B9A /* super_waiter */ = {
 			isa = PBXGroup;
 			children = (
+				CE5969252A668626008D7767 /* BootSplash.storyboard */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -378,6 +382,7 @@
 				CEB1F93D2A55FE4C003CDA2C /* Octicons.ttf in Resources */,
 				CEB1F9492A55FE4D003CDA2C /* Foundation.ttf in Resources */,
 				CEB1F9572A55FE4D003CDA2C /* SimpleLineIcons.ttf in Resources */,
+				CE5969272A668627008D7767 /* BootSplash.storyboard in Resources */,
 				CEB1F94B2A55FE4D003CDA2C /* Ionicons.ttf in Resources */,
 				CEB1F9552A55FE4D003CDA2C /* EvilIcons.ttf in Resources */,
 				CEB1F94F2A55FE4D003CDA2C /* FontAwesome5_Regular.ttf in Resources */,
@@ -402,6 +407,7 @@
 				CEB1F93C2A55FE4C003CDA2C /* Octicons.ttf in Resources */,
 				CEB1F9482A55FE4D003CDA2C /* Foundation.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				CE5969262A668627008D7767 /* BootSplash.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				22099077D57F4AFEA9744CE7 /* Montserrat-Black.ttf in Resources */,
 				CEB1F9422A55FE4C003CDA2C /* FontAwesome5_Brands.ttf in Resources */,

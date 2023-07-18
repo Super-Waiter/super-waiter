@@ -5,6 +5,13 @@ export enum ROLE {
   WAITER = 'Waiter',
 }
 
+export type Client = {
+  id?: string;
+  waiterId: string;
+  roomId: string;
+  firebaseAuthId: string;
+};
+
 export type User = {
   id?: string;
   firstName: string;
