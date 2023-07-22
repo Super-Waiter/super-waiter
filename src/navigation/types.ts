@@ -11,6 +11,8 @@ export type RootStackParamList = {
   Rooms: undefined;
   RoomDetails: {id: string};
   ChatScreen: {id: string};
+  EditProfile: undefined;
+  Profile: undefined;
 };
 
 export type ScannerScreenNavigationProp = NativeStackNavigationProp<
@@ -52,4 +54,14 @@ export type ClientScreenNavigationProp = NativeStackNavigationProp<
 export type RooomsScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'Rooms'
+>;
+
+export type ProfileScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'Profile'
+>;
+
+export type EditProfileScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'EditProfile'
 >;

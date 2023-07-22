@@ -131,7 +131,7 @@ const Item = ({item}: ItemProps) => {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: Colors.White,
+    backgroundColor: Colors.Background,
   },
   title: {
     width: 'auto',

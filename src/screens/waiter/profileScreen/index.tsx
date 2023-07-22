@@ -17,13 +17,20 @@ import {ROLE} from '../../../model';
 
 // hooks
 import {useAppSelector} from '../../../store/hooks';
+import {useNavigation} from '@react-navigation/native';
+import {ProfileScreenNavigationProp} from '../../../navigation/types';
 
 const uri = Image.resolveAssetSource(
   require('../../../../assets/images/waiter.png'),
 ).uri;
 
 function WaiterProfileScreen() {
+  const navigation = useNavigation<ProfileScreenNavigationProp>();
   const waiter = useAppSelector(state => state.currentUser);
+
+  const handleEditScreen = () => {
+    navigation.navigate('EditProfile');
+  };
 
   return (
     <SafeAreaView edges={['top']} style={styles.main}>
@@ -64,7 +71,12 @@ function WaiterProfileScreen() {
         </View>
       </ScrollView>
       <View style={styles.editIconView}>
-        <MaterialIcons size={40} color={Colors.Primary} name="edit" />
+        <MaterialIcons
+          onPress={handleEditScreen}
+          size={40}
+          color={Colors.Primary}
+          name="edit"
+        />
       </View>
     </SafeAreaView>
   );

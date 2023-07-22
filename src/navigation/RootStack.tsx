@@ -25,6 +25,7 @@ import {getOrganisationById} from '../api/organization';
 import {getUserByEmail} from '../api/user';
 import axios from 'axios';
 import ChatsScreen from '../screens/waiter/chatsScreen';
+import EditProfileScreen from '../screens/waiter/editProfileScreen/inex';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -110,6 +111,7 @@ const RootStack = () => {
             <Stack.Screen name="RoomDetails" component={RoomDetailsScreen} />
             <Stack.Screen name="Rooms" component={WaiterRoomsScreen} />
             <Stack.Screen name="ChatScreen" component={ChatsScreen} />
+            <Stack.Screen name="EditProfile" component={EditProfileScreen} />
           </Stack.Group>
         )}
         {isSignedIn === SIGNIN_TYPE.UNSIGNED && (
