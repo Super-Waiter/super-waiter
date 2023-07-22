@@ -1,9 +1,15 @@
 import {configureStore} from '@reduxjs/toolkit';
 import currentUser from './features/currentUser';
+import currentOrganisation from './features/currentOrganisation';
+import room from './features/room';
+import client from './features/client';
 
 export const store = configureStore({
   reducer: {
     currentUser,
+    room,
+    currentOrganisation,
+    client,
   },
 });
 

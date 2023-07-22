@@ -43,7 +43,7 @@ const Login = () => {
 
           if (ok) {
             dispatch(CurrentUserActions.setCurrentUser(user));
-            navigation.navigate('Waiter');
+            // navigation.navigate('Waiter');
           }
         }
         console.log('User account created & signed in!');

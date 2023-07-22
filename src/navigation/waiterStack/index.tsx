@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React from 'react';
+import React, {useEffect} from 'react';
 import {WaiterStackParamList} from './types';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -10,10 +10,27 @@ import WaiterRoomsScreen from '../../screens/waiter/waiterRoomsScreen';
 // icons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Colors} from '../../style';
+import {getRoomsByOrganisation} from '../../api/room';
+import {useAppDispatch, useAppSelector} from '../../store/hooks';
+import {RoomActions} from '../../store/features/room';
 
 const Stack = createBottomTabNavigator<WaiterStackParamList>();
 
 export const WaiterStack = () => {
+  const organisation = useAppSelector(state => state.currentOrganisation);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const onGetRooms = async () => {
+      const {ok, rooms} = await getRoomsByOrganisation(organisation.id);
+
+      if (ok) {
+        dispatch(RoomActions.getAllRooms(rooms));
+      }
+    };
+    onGetRooms();
+  }, [dispatch, organisation.id]);
+
   return (
     <Stack.Navigator
       initialRouteName="Rooms"

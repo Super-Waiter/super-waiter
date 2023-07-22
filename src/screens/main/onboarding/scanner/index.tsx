@@ -1,5 +1,5 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 // navigations
@@ -13,29 +13,40 @@ import {Colors, Utils} from '../../../../style';
 // import {AppHeader} from '../../../components/AppHeader';
 import {AppButton} from '../../../../components/AppButton';
 import {Spacing} from '../../../../components/Spacing';
-import {AppText} from '../../../../components/AppText';
 
 // react-native-camera-kit
 import {CameraScreen} from 'react-native-camera-kit';
+import socket from '../../../../socket';
+import {AppText} from '../../../../components/AppText';
 
 // icons
 // import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const ScannerScreen = () => {
   const navigation = useNavigation<ScannerScreenNavigationProp>();
-
-  const [qrcodeValue, setQrcodeValue] = useState<string>('');
-
-  // const handleGoToWaiter = () => {
-  //   navigation.navigate('Waiter');
-  // };
+  const [value, setValue] = useState({
+    room: '',
+    // firebaseToken: '',
+    waiter: '',
+    organisation: '',
+  });
 
   const handleGoToClient = () => {
-    navigation.navigate('Client');
+    console.log(value);
+    const data = {
+      organisation: '6fdc32ea-e37c-4bff-84b2-efb6628a3d0e',
+      room: 'd4ded0af-0bcb-4e89-a771-a160aae84d2a',
+      waiter: '3b1c4840-6d5b-4c34-81e6-da17378612a7',
+    };
+
+    socket.emit('check-qrCode', data);
   };
 
   const onReadCode = (event: any) => {
-    setQrcodeValue(event.nativeEvent.codeStringValue);
+    const qrcodeValue = event.nativeEvent.codeStringValue as string;
+    // console.log(qrcodeValue);
+
+    setValue(JSON.parse(qrcodeValue));
   };
 
   return (
@@ -70,7 +81,7 @@ const ScannerScreen = () => {
           </View>
 
           <Spacing vertical={10} />
-          {!qrcodeValue && (
+          {value.room.length === 0 && (
             <View style={styles.textView}>
               <AppText
                 text="Scan the QR Code from waiter's phone."
@@ -81,13 +92,13 @@ const ScannerScreen = () => {
             </View>
           )}
 
-          {qrcodeValue && (
-            <AppButton
-              width={Utils.DEVICE_WIDTH * 0.6}
-              title="Continue"
-              onPress={handleGoToClient}
-            />
-          )}
+          {/* {value.room.length !== 0 && ( */}
+          <AppButton
+            width={Utils.DEVICE_WIDTH * 0.6}
+            title="Continue"
+            onPress={handleGoToClient}
+          />
+          {/* )} */}
 
           <Spacing vertical={100} />
           <AppButton
