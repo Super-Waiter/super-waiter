@@ -18,6 +18,7 @@ type ServerToClientEvents = {
   'room-empy': (id: string) => void;
   'room-book': (id: string) => void;
   'room-call': (id: string) => void;
+  'room-updated': (room: Room) => void;
 };
 
 type ClientToServerEvents = {
@@ -29,6 +30,7 @@ type ClientToServerEvents = {
   'empy-room': (id: string) => void;
   'book-room': (id: string) => void;
   'call-room': (id: string) => void;
+  'edit-room': (room: Room) => void;
 };
 
 const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(

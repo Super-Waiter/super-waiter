@@ -21,7 +21,11 @@ const roomSlice = createSlice({
       }
     },
     deleteRoomById: (state, action) => {
-      state.rooms = state.rooms.filter(room => room.id !== action.payload);
+      const rooms = state.rooms.filter(room => room.id !== action.payload);
+
+      const sortedRoomsByStatus = rooms.sort((a, b) => a.status - b.status);
+
+      state.rooms = sortedRoomsByStatus;
     },
     addRoom: (state, action) => {
       state.rooms = [...state.rooms, action.payload];
@@ -34,8 +38,11 @@ const roomSlice = createSlice({
 
         return room;
       });
+      const sortedRoomsByStatus = updatedRooms.sort(
+        (a, b) => a.status - b.status,
+      );
 
-      state.rooms = updatedRooms;
+      state.rooms = sortedRoomsByStatus;
     },
     busyRoom: (state, action) => {
       const updatedRooms = state.rooms.map(room => {
@@ -46,7 +53,11 @@ const roomSlice = createSlice({
         return room;
       });
 
-      state.rooms = updatedRooms;
+      const sortedRoomsByStatus = updatedRooms.sort(
+        (a, b) => a.status - b.status,
+      );
+
+      state.rooms = sortedRoomsByStatus;
     },
     callRoom: (state, action) => {
       const updatedRooms = state.rooms.map(room => {
@@ -57,7 +68,11 @@ const roomSlice = createSlice({
         return room;
       });
 
-      state.rooms = updatedRooms;
+      const sortedRoomsByStatus = updatedRooms.sort(
+        (a, b) => a.status - b.status,
+      );
+
+      state.rooms = sortedRoomsByStatus;
     },
     emptyRoom: (state, action) => {
       const updatedRooms = state.rooms.map(room => {
@@ -68,7 +83,26 @@ const roomSlice = createSlice({
         return room;
       });
 
-      state.rooms = updatedRooms;
+      const sortedRoomsByStatus = updatedRooms.sort(
+        (a, b) => a.status - b.status,
+      );
+
+      state.rooms = sortedRoomsByStatus;
+    },
+    updateRoom: (state, action) => {
+      const newRoom = action.payload as Room;
+
+      const rooms = state.rooms.map(room => {
+        if (room.id === newRoom.id) {
+          return newRoom;
+        }
+
+        return room;
+      });
+
+      const sortedRoomsByStatus = rooms.sort((a, b) => a.status - b.status);
+
+      state.rooms = sortedRoomsByStatus;
     },
   },
 });

@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
@@ -20,9 +20,6 @@ import {AppButton} from '../../../components/AppButton';
 import auth from '@react-native-firebase/auth';
 import {CurrentOrganisationActions} from '../../../store/features/currentOrganisation';
 import {CurrentUserActions} from '../../../store/features/currentUser';
-import socket from '../../../socket';
-import {RoomActions} from '../../../store/features/room';
-import {ClientActions} from '../../../store/features/client';
 import {useNavigation} from '@react-navigation/native';
 import {WaiterScreenNavigationProp} from '../../../navigation/types';
 
@@ -33,28 +30,6 @@ const WaiterRoomsScreen = () => {
   const client = useAppSelector(state => state.client);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [navigateRoomId, setNavigateRoomId] = useState<string>(' ');
-
-  useEffect(() => {
-    socket.on('client-created', client => {
-      dispatch(ClientActions.setClient(client));
-    });
-
-    socket.on('room-busy', id => {
-      dispatch(RoomActions.busyRoom(id));
-    });
-  }, [dispatch]);
-
-  // const sortedRoomsByStatus = rooms?.sort((a, b) => a.status - b.status);
-
-  // const sortedRoomsByStatus = useMemo(() => {
-  //   // console.warn(rooms);
-
-  //   if (rooms.length !== 0) {
-  //     return rooms?.sort((a, b) => {
-  //       return a.status - b.status;
-  //     });
-  //   }
-  // }, [rooms]);
 
   const toggleModal = useCallback(() => {
     setIsModalVisible(p => !p);
@@ -110,7 +85,7 @@ const WaiterRoomsScreen = () => {
       <FlatList
         data={rooms}
         renderItem={({item}) => {
-          setNavigateRoomId(item.id!);
+          setNavigateRoomId(item.id ? item.id : '');
           return (
             <RoomCircleBtn
               onPress={onNavigatePress}
