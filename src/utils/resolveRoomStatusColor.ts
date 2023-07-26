@@ -1,7 +1,7 @@
 import {ROOM_STATUS} from '../model';
 import {Colors} from '../style';
 
-export const resolvRoomStatuseColor = (status: ROOM_STATUS) => {
+export const resolveRoomStatusColor = (status: ROOM_STATUS) => {
   if (status === ROOM_STATUS.BOOKED) {
     return Colors.Yellow;
   }

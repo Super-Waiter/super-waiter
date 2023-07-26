@@ -7,9 +7,7 @@ import {Colors} from '../../../style';
 
 // components
 import {AppHeader} from '../../../components/AppHeader';
-// import {AppText} from '../../../components/AppText';
 import {RoomCircleBtn} from './RoomCircleBtn';
-// import {tempRoomData} from '../../../tempData/rooms';
 
 // Icons
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -27,9 +25,7 @@ const WaiterRoomsScreen = () => {
   const navigation = useNavigation<WaiterScreenNavigationProp>();
   const dispatch = useAppDispatch();
   const {rooms} = useAppSelector(state => state.room);
-  const client = useAppSelector(state => state.client);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-  const [navigateRoomId, setNavigateRoomId] = useState<string>(' ');
 
   const toggleModal = useCallback(() => {
     setIsModalVisible(p => !p);
@@ -40,16 +36,6 @@ const WaiterRoomsScreen = () => {
 
     dispatch(CurrentOrganisationActions.clearCurrentOrganisation());
     dispatch(CurrentUserActions.reset());
-  };
-
-  const onNavigatePress = () => {
-    console.log('CLIENT', client);
-
-    if (client.room === navigateRoomId) {
-      navigation.navigate('ChatScreen', {id: navigateRoomId});
-    } else {
-      navigation.navigate('RoomDetails', {id: navigateRoomId});
-    }
   };
 
   return (
@@ -85,10 +71,9 @@ const WaiterRoomsScreen = () => {
       <FlatList
         data={rooms}
         renderItem={({item}) => {
-          setNavigateRoomId(item.id ? item.id : '');
           return (
             <RoomCircleBtn
-              onPress={onNavigatePress}
+              onPress={() => navigation.navigate('RoomDetails', {id: item.id!})}
               name={item.name}
               status={item.status}
             />

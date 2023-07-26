@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useRef, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -14,11 +15,10 @@ import WaiterRoomsScreen from '../screens/waiter/waiterRoomsScreen';
 
 import socket from '../socket';
 
-import {useAppDispatch} from '../store/hooks';
+import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {CurrentUserActions} from '../store/features/currentUser';
 import {CurrentOrganisationActions} from '../store/features/currentOrganisation';
 
-import {SIGNIN_TYPE} from '../model';
 import {RootStackParamList} from './types';
 
 import {getOrganisationById} from '../api/organization';
@@ -26,6 +26,10 @@ import {getUserByEmail} from '../api/user';
 import axios from 'axios';
 import ChatsScreen from '../screens/waiter/chatsScreen';
 import EditProfileScreen from '../screens/waiter/editProfileScreen/inex';
+
+import {deleteClientFromStorage, getClientFromStorage} from '../api/client';
+import {SIGNIN_TYPE} from '../model';
+import {ClientActions} from '../store/features/client';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -39,27 +43,26 @@ const RootStack = () => {
   );
 
   useEffect(() => {
-    socket.on('connect', () => {
-      console.log('connected');
+    onNavigationReady();
 
-      socket.on('user-joined', (userId: any) => {
-        console.log(userId);
-      });
+    // sign out
+    getClientFromStorage().then(res => {
+      if (res.ok) {
+        // deleteClientFromStorage(res.data.id!);
+        console.log('hello');
 
-      socket.on('qrCode-checked', userId => {
-        if (userId.length) {
-          setIsSignedIn(SIGNIN_TYPE.CLIENT);
-        }
-      });
+        socket.on('client-closed', id => {
+          console.log('hello1');
+          console.log(id, res.data.id);
+
+          if (res.data.id === id) {
+            deleteClientFromStorage(id);
+            setIsSignedIn(SIGNIN_TYPE.UNSIGNED);
+            dispatch(ClientActions.reset);
+          }
+        });
+      }
     });
-
-    // socket.on('disconnect', () => {
-    //   console.log('disconnected');
-    // });
-
-    return () => {
-      socket.disconnect();
-    };
   }, []);
 
   const onNavigationReady = async () => {
@@ -96,6 +99,35 @@ const RootStack = () => {
       setIsSignedIn(SIGNIN_TYPE.UNSIGNED);
     }
 
+    socket.on('connect', () => {
+      console.log('hello');
+
+      console.log('connected');
+
+      socket.on('qrCode-checked', userId => {
+        if (userId.length) {
+          setIsSignedIn(SIGNIN_TYPE.CLIENT);
+        }
+      });
+    });
+
+    // check client
+
+    getClientFromStorage().then(res => {
+      if (res.ok) {
+        socket.emit('check-client', res.data.id!);
+        socket.on('client-checked', async ok => {
+          if (ok) {
+            setIsSignedIn(SIGNIN_TYPE.CLIENT);
+          } else {
+            setIsSignedIn(SIGNIN_TYPE.UNSIGNED);
+            await deleteClientFromStorage(res.data.id!);
+            dispatch(ClientActions.reset);
+          }
+        });
+      }
+    });
+
     RNBootSplash.hide({fade: true, duration: 500});
   };
 
@@ -115,15 +147,15 @@ const RootStack = () => {
           </Stack.Group>
         )}
         {isSignedIn === SIGNIN_TYPE.UNSIGNED && (
-          <>
+          <Stack.Group>
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Scanner" component={ScannerScreen} />
-          </>
+          </Stack.Group>
         )}
         {isSignedIn === SIGNIN_TYPE.CLIENT && (
-          <>
+          <Stack.Group>
             <Stack.Screen name="Client" component={ClientStack} />
-          </>
+          </Stack.Group>
         )}
       </Stack.Navigator>
     </NavigationContainer>

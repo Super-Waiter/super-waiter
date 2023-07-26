@@ -9,7 +9,7 @@ import {
 import {AppText} from '../../../components/AppText';
 import {ROOM_STATUS} from '../../../model';
 import {Colors, Fonts, Utils} from '../../../style';
-import {resolvRoomStatuseColor} from '../../../utils/resolvRoomStatuseColor';
+import {resolveRoomStatusColor} from '../../../utils/resolveRoomStatusColor';
 
 type Props = {
   onPress: () => void;
@@ -19,7 +19,7 @@ type Props = {
 
 export const RoomCircleBtn = ({onPress, status, name}: Props) => {
   const dynamicBtnStyles: StyleProp<ViewStyle> = {
-    borderColor: resolvRoomStatuseColor(status),
+    borderColor: resolveRoomStatusColor(status),
   };
 
   return (
@@ -28,7 +28,7 @@ export const RoomCircleBtn = ({onPress, status, name}: Props) => {
         style={[styles.circle, dynamicBtnStyles]}
         onPress={onPress}>
         <AppText
-          color={resolvRoomStatuseColor(status)}
+          color={resolveRoomStatusColor(status)}
           fontSize={Fonts.xl2}
           fontWeight="semibold">
           {name}

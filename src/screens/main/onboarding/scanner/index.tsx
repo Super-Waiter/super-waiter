@@ -32,11 +32,10 @@ const ScannerScreen = () => {
   });
 
   const handleGoToClient = () => {
-    console.log(value);
     const data = {
-      organisation: '6fdc32ea-e37c-4bff-84b2-efb6628a3d0e',
-      room: 'd4ded0af-0bcb-4e89-a771-a160aae84d2a',
-      waiter: '3b1c4840-6d5b-4c34-81e6-da17378612a7',
+      organisation: '06d3802c-2e77-47ec-be94-6d935c209cda',
+      room: 'e314fc2d-bd23-4d45-8d7f-09816a6a1632',
+      waiter: '429ab135-2b7f-4b99-9168-8b8c13423f39',
     };
 
     socket.emit('check-qrCode', data);
