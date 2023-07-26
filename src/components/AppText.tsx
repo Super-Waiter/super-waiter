@@ -11,6 +11,7 @@ interface Props {
   textTransform?: 'none' | 'capitalize' | 'uppercase' | 'lowercase' | undefined;
   children?: any;
   textAlign?: 'auto' | 'left' | 'right' | 'center' | 'justify' | undefined;
+  numberOfLines?: number;
 }
 
 export const AppText = ({
@@ -21,6 +22,7 @@ export const AppText = ({
   children,
   textTransform,
   textAlign = 'auto',
+  numberOfLines = undefined,
 }: Props) => {
   const textStyles: StyleProp<TextStyle> = {
     fontSize,
@@ -30,5 +32,9 @@ export const AppText = ({
     textAlign,
   };
 
-  return <RNText style={[textStyles]}>{children || text}</RNText>;
+  return (
+    <RNText numberOfLines={numberOfLines} style={[textStyles]}>
+      {children || text}
+    </RNText>
+  );
 };

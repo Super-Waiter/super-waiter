@@ -7,25 +7,19 @@ import {
   ViewStyle,
 } from 'react-native';
 import {AppText} from '../../../components/AppText';
-import {Room} from '../../../model';
+import {ROOM_STATUS} from '../../../model';
 import {Colors, Fonts, Utils} from '../../../style';
-import {resolvRoomStatuseColor} from '../../../utils/resolvRoomStatuseColor';
-import {useNavigation} from '@react-navigation/native';
-import {RoomDetailsScreenNavigationProp} from '../../../navigation/types';
+import {resolveRoomStatusColor} from '../../../utils/resolveRoomStatusColor';
 
 type Props = {
-  item: Room;
+  onPress: () => void;
+  status: ROOM_STATUS;
+  name: string | number;
 };
 
-export const RoomCircleBtn = ({item}: Props) => {
-  const navigation = useNavigation<RoomDetailsScreenNavigationProp>();
-
+export const RoomCircleBtn = ({onPress, status, name}: Props) => {
   const dynamicBtnStyles: StyleProp<ViewStyle> = {
-    borderColor: resolvRoomStatuseColor(item.status),
-  };
-
-  const onPress = () => {
-    navigation.navigate('RoomDetails', {id: item.id});
+    borderColor: resolveRoomStatusColor(status),
   };
 
   return (
@@ -34,10 +28,10 @@ export const RoomCircleBtn = ({item}: Props) => {
         style={[styles.circle, dynamicBtnStyles]}
         onPress={onPress}>
         <AppText
-          color={resolvRoomStatuseColor(item.status)}
+          color={resolveRoomStatusColor(status)}
           fontSize={Fonts.xl2}
           fontWeight="semibold">
-          {item.id}
+          {name}
         </AppText>
       </TouchableOpacity>
     </View>

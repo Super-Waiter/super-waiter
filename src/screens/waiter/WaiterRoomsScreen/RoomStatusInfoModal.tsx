@@ -6,7 +6,7 @@ import {Spacing} from '../../../components/Spacing';
 import {ROOM_STATUS} from '../../../model';
 import {AppButton} from '../../../components/AppButton';
 import {Colors} from '../../../style';
-import {resolvRoomStatuseColor} from '../../../utils/resolvRoomStatuseColor';
+import {resolveRoomStatusColor} from '../../../utils/resolveRoomStatusColor';
 
 interface Props {
   isModalVisible: boolean;
@@ -63,7 +63,7 @@ interface ItemProps {
 const Item = (props: ItemProps) => {
   const {status} = props;
 
-  const color = resolvRoomStatuseColor(status);
+  const color = resolveRoomStatusColor(status);
 
   const resolveStatusTitle = () => {
     if (status === ROOM_STATUS.BOOKED) {

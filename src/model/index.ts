@@ -5,6 +5,13 @@ export enum ROLE {
   WAITER = 'Waiter',
 }
 
+// export type Client = {
+//   id?: string;
+//   waiter: string;
+//   room: string;
+//   firebaseAuthId: string;
+// };
+
 export type User = {
   id?: string;
   firstName: string;
@@ -14,6 +21,7 @@ export type User = {
   role: ROLE;
   email: string;
   phone: string;
+  client?: string;
 };
 
 export enum FOOD_STATUS {
@@ -41,6 +49,8 @@ export type Room = {
   id?: string;
   name: string | number;
   status: ROOM_STATUS;
+  organisation: string;
+  client?: string;
 };
 
 export type Organisation = {
@@ -50,5 +60,25 @@ export type Organisation = {
   email: string;
   subscriptionId: string;
   owner: string;
+  client?: string;
   users: User[];
 };
+
+export enum CLIENT_STATUS {
+  ACTIVE = 0,
+  UNACTIVE = 1,
+}
+
+export type Client = {
+  id?: string;
+  waiter: string;
+  room: string;
+  status: CLIENT_STATUS;
+  organisation: string;
+};
+
+export enum SIGNIN_TYPE {
+  'WAITER',
+  'CLIENT',
+  'UNSIGNED',
+}

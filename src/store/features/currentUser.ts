@@ -9,6 +9,7 @@ const initialState: User = {
   role: ROLE.ADMIN,
   email: '',
   phone: '',
+  client: '',
 };
 
 export const currentUserSlice = createSlice({
